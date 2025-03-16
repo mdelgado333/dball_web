@@ -1,8 +1,8 @@
-import { Inter } from "next/font/google";
 import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "./ui/navbar";
-import { inter } from "./ui/fonts";
+import { roboto } from "./ui/fonts";
+import BG from './ui/bg'
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,7 +16,22 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} antialiased`}>
+      <body className={`${roboto.className} antialiased`}>
+      <div className="fixed inset-0 -z-10">
+          <BG
+            lineColor="#fff"
+            backgroundColor="rgba(0, 0, 0, 0.2)"
+            waveSpeedX={0.02}
+            waveSpeedY={0.01}
+            waveAmpX={40}
+            waveAmpY={20}
+            friction={0.9}
+            tension={0.01}
+            maxCursorMove={120}
+            xGap={12}
+            yGap={36}
+          />
+        </div>
         <div className="flex flex-col overflow-x-clip">
           <Navbar />
           <main className="flex flex-grow flex-col">{children}</main>
