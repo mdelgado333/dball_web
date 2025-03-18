@@ -2,6 +2,7 @@ import Link from "next/link";
 import { bebas } from "../ui/fonts";
 import Image from "next/image";
 
+
 export default function Page() {
     return (
     <div>
@@ -22,6 +23,7 @@ export default function Page() {
                         width={15}
                         height={15}
                         alt='check'/>
+                        
                         1 llamada individual para iniciar el programa
                     </div>
                     <div className="flex flex-row content-top gap-2">
@@ -44,7 +46,14 @@ export default function Page() {
                         1 llamada grupal al acabar el programa para ver las mejoras
                     </div>
                 </div>
-                <Link href="/vert/checkout" className={`${bebas.className} flex flex-row justify-center gap-1 border border-white rounded-xl p-3 w-30 text-center transition duration-200 ease-in-out hover:bg-black hover:scale-105`}>49€</Link>
+                <Link
+                    href={{
+                        pathname: '/vert/checkout',
+                        query: { duration: '1' }
+                     }}
+                    className={`${bebas.className} flex flex-row justify-center gap-1 border border-white rounded-xl p-3 w-30 text-center transition duration-200 ease-in-out hover:bg-black hover:scale-105`}>
+                    49€
+                </Link>
             </div>
 
             <div className="w-100 h-125 px-10 py-5 backdrop-filter backdrop-blur-md bg-opacity-10 border border-gray-100 text-white border rounded-xl flex flex-col justify-evenly items-center transition duration-200 ease-in-out hover:scale-105">
@@ -85,7 +94,12 @@ export default function Page() {
                     
 
                 </div>
-                <Link href="/vert/checkout" className={`${bebas.className} flex flex-row justify-center gap-1 border border-white rounded-xl p-3 w-30 text-center transition duration-200 ease-in-out hover:bg-black hover:text-white hover:scale-105`}>
+                <Link 
+                href={{
+                    pathname: '/vert/checkout',
+                    query: { duration: 3 }
+                 }}
+                className={`${bebas.className} flex flex-row justify-center gap-1 border border-white rounded-xl p-3 w-30 text-center transition duration-200 ease-in-out hover:bg-black hover:text-white hover:scale-105`}>
                 <div className="line-through text-red-400">
                     149€
                 </div>
@@ -128,7 +142,12 @@ export default function Page() {
                         1 llamada grupal al acabar el programa para ver las mejoras
                     </div>
                 </div>
-                <Link href="/vert/checkout" className={`${bebas.className} flex flex-row justify-center gap-1 border border-white rounded-xl p-3 w-30 text-center transition duration-200 ease-in-out hover:bg-black hover:scale-105`}>
+                <Link 
+                href={{
+                    pathname: '/vert/checkout',
+                    query: { duration: '6' }
+                 }}
+                className={`${bebas.className} flex flex-row justify-center gap-1 border border-white rounded-xl p-3 w-30 text-center transition duration-200 ease-in-out hover:bg-black hover:scale-105`}>
                 <div className="line-through text-red-400">
                     299€
                 </div>
@@ -137,6 +156,9 @@ export default function Page() {
                 </div>
                 </Link>
             </div>
+        </div>
+        <div className="h-10">
+
         </div>
     </div>
 )

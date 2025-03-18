@@ -1,0 +1,10 @@
+[lcl-host]
+realm-apid = 'localhost'
+
+[org]
+apid = 'mdelgado333'
+
+[service]
+apid = 'dballhub'
+category = 'javascript'
+cert-style = 'acme'

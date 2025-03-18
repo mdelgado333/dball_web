@@ -5,6 +5,8 @@ import { convertToSubCurrency } from '@/app/lib/convertToSubcurrency'
 import { Elements } from '@stripe/react-stripe-js'
 import { loadStripe } from '@stripe/stripe-js'
 import { bebas } from '@/app/ui/fonts'
+import { dballVertPlans } from '../../lib/data'
+import { useSearchParams } from 'next/navigation'
 
 if (process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY === undefined) {
     throw new Error("NEXT_PUBLIC_STRIPE_PUBLIC_KEY is not defined")
@@ -12,26 +14,31 @@ if (process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY === undefined) {
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY)
 
 export default function Page() {
-    const amount = 49
-    const duration = "1 mes"
+
+    const searchParams = useSearchParams();
+    const duration = searchParams.get("duration") ?? "1"
+    const selectedPlan = dballVertPlans.find((plan: any) => plan.duration.toString() === duration);
+    const amount = selectedPlan?.price ?? 49
+    const monthPlural = duration?.toString()=='1' ? 'mes' : 'meses'
+
     return (
         <div className='text-center items-center flex flex-col'>
             <div className={`${bebas.className} text-[100px]`}>
-                Resumen de compra
+            Coaching 1:1 de {amount}€ por {duration} {monthPlural}
             </div>
-            <div className='w-100 px-10 py-5 backdrop-filter backdrop-blur-md bg-opacity-10 border border-gray-100 text-white border rounded-xl flex flex-col justify-evenly items-center'>
-                Coaching 1:1 de {amount}€ por {duration}
-            </div>
-            <Elements
+            <div className='w-100 px-10 py-5 mb-5 backdrop-filter backdrop-blur-md bg-opacity-10 border border-gray-100 text-white border rounded-xl flex flex-col justify-evenly items-center'>
+                <Elements
                 stripe={stripePromise}
                 options={{
+                    loader: "auto",
                     mode: "payment",
                     amount: convertToSubCurrency(amount),
                     currency: "eur"
                 }}
             >
-                {/* <CheckoutPage amount={amount} /> */}
+                <CheckoutPage amount={amount} />
             </Elements>
+            </div>
         </div>
         
     )

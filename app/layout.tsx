@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "./ui/navbar";
 import { roboto } from "./ui/fonts";
 import BG from './ui/bg'
+import Footer from "./ui/landing/footer";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -17,8 +18,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${roboto.className} antialiased`}>
-      <div className="fixed inset-0 -z-10">
           <BG
+            className="fixed inset-0 -z-10"
             lineColor="#fff"
             backgroundColor="rgba(0, 0, 0, 0.2)"
             waveSpeedX={0.02}
@@ -30,13 +31,13 @@ export default function RootLayout({
             maxCursorMove={120}
             xGap={12}
             yGap={36}
-          />
-        </div>
-        <div className="flex flex-col overflow-x-clip">
+          />  
           <Navbar />
-          <main className="flex flex-grow flex-col">{children}</main>
-        </div>
+          <main className="flex flex-grow flex-col">{children}
+
+          </main>
       </body>
+      <Footer/>
     </html>
   );
 }

@@ -1,9 +1,9 @@
 export const dballVertPlans = [
     {
       title: "Planificación de 1 mes",
-      price: "49€",
-      originalPrice: null,
-      duration: "1 mes",
+      price: 49,
+      originalPrice: 49,
+      duration: 1,
       features: [
         "1 llamada individual para iniciar el programa",
         "1 plan de preparación física individualizado de 1 mes",
@@ -12,9 +12,9 @@ export const dballVertPlans = [
     },
     {
       title: "Planificación de 3 meses",
-      price: "119€",
-      originalPrice: "149€",
-      duration: "3 meses",
+      price: 119,
+      originalPrice: 149,
+      duration: 3,
       features: [
         "3 llamadas individuales (1 por mes)",
         "3 preparaciones físicas individuales ajustadas mes a mes",
@@ -23,9 +23,9 @@ export const dballVertPlans = [
     },
     {
       title: "Planificación de 6 meses",
-      price: "199€",
-      originalPrice: "299€",
-      duration: "6 meses",
+      price: 199,
+      originalPrice: 299,
+      duration: 6,
       features: [
         "6 llamadas individuales (1 por mes)",
         "6 preparaciones físicas individuales ajustadas mes a mes",
