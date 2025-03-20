@@ -20,17 +20,14 @@ export default function Page() {
 
     const stripePromise = loadStripe(stripePublicKey)
 
-    // State to manage the search parameters, so we handle them after mount
+    const searchParams = useSearchParams()
     const [duration, setDuration] = useState<string | null>(null)
 
-    // Use useSearchParams and update the state on mount
     useEffect(() => {
-        const searchParams = useSearchParams()
         const queryDuration = searchParams.get("duration")
         setDuration(queryDuration ?? "1")
     }, [])
 
-    // Prevent rendering until the state is set
     if (duration === null) {
         return <div>Loading...</div>
     }
