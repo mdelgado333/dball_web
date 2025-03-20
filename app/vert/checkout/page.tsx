@@ -17,7 +17,13 @@ export default function Page() {
 
     const searchParams = useSearchParams();
     const duration = searchParams.get("duration") ?? "1"
-    const selectedPlan = dballVertPlans.find((plan: any) => plan.duration.toString() === duration);
+    const selectedPlan = dballVertPlans.find((plan: {
+        title: string;
+        price: number;
+        originalPrice: number;
+        duration: number;
+        features: string[];
+    }) => plan.duration.toString() === duration);
     const amount = selectedPlan?.price ?? 49
     const monthPlural = duration?.toString()=='1' ? 'mes' : 'meses'
 
