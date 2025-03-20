@@ -1,25 +1,25 @@
-'use client'
+'use client';
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { bebas } from "@/app/ui/fonts";
 
-export default function PaymentSuccess() {
+function PaymentSuccessContent() {
     const searchParams = useSearchParams();
-    
+
     // Store parameters in state
     const [amount, setAmount] = useState<string | null>(null);
     const [email, setEmail] = useState<string | null>(null);
     const [emailSent, setEmailSent] = useState(false);
 
     useEffect(() => {
-        // Get values from search params only on the client
+        // Fetch search parameters from URL
         const fetchedAmount = searchParams.get("amount");
         const fetchedEmail = searchParams.get("email");
 
         setAmount(fetchedAmount);
         setEmail(fetchedEmail);
-    }, [searchParams]); // Runs when searchParams change
+    }, [searchParams]);
 
     useEffect(() => {
         if (email && !emailSent) {
@@ -62,5 +62,13 @@ export default function PaymentSuccess() {
                 </div>
             </div>
         </div>
+    );
+}
+
+export default function PaymentSuccess() {
+    return (
+        <Suspense fallback={<div>Cargando...</div>}>
+            <PaymentSuccessContent />
+        </Suspense>
     );
 }
