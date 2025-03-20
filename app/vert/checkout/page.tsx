@@ -10,11 +10,14 @@ import { useSearchParams } from 'next/navigation'
 
 export default function Page() {
 
-    if (process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY === undefined) {
+    const stripePublicKey = process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY
+
+
+    if (stripePublicKey === undefined) {
         throw new Error("NEXT_PUBLIC_STRIPE_PUBLIC_KEY is not defined")
     }
 
-    const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY)
+    const stripePromise = loadStripe(stripePublicKey)
 
     const searchParams = useSearchParams();
     const duration = searchParams.get("duration") ?? "1"
