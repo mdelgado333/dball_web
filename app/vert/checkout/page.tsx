@@ -7,12 +7,13 @@ import { loadStripe } from '@stripe/stripe-js'
 import { bebas } from '@/app/ui/fonts'
 import { dballVertPlans } from '../../lib/data'
 import { useSearchParams } from 'next/navigation'
+import { Suspense } from 'react'
 
 export default function Page() {
 
     const stripePublicKey = process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY
-
-
+    console.log()
+    
     if (stripePublicKey === undefined) {
         throw new Error("NEXT_PUBLIC_STRIPE_PUBLIC_KEY is not defined")
     }
@@ -45,9 +46,11 @@ export default function Page() {
                     amount: convertToSubCurrency(amount),
                     currency: "eur"
                 }}
-            >
-                <CheckoutPage amount={amount} />
-            </Elements>
+                >
+                    <Suspense fallback={<div>Loading...</div>}>
+                        <CheckoutPage amount={amount} />
+                    </Suspense>
+                </Elements>
             </div>
         </div>
         
