@@ -22,11 +22,11 @@ export default function Page() {
     const monthPlural = duration?.toString()=='1' ? 'mes' : 'meses'
 
     return (
-        <div className='text-center items-center flex flex-col'>
-            <div className={`${bebas.className} text-[100px]`}>
+        <div className='text-center items-center flex flex-col gap-y-5'>
+            <div className={`${bebas.className} text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl`}>
             Coaching 1:1 de {amount}€ por {duration} {monthPlural}
             </div>
-            <div className='w-100 px-10 py-5 mb-5 backdrop-filter backdrop-blur-md bg-opacity-10 border border-gray-100 text-white border rounded-xl flex flex-col justify-evenly items-center'>
+            <div className='w-5/6 sm:w-100 px-10 py-5 mb-5 backdrop-filter backdrop-blur-md bg-opacity-10 border border-gray-100 text-white border rounded-xl flex flex-col justify-evenly items-center'>
                 <Elements
                 stripe={stripePromise}
                 options={{

@@ -12,6 +12,7 @@ const CheckoutPage = ( {amount} : {amount: number} ) => {
     const [errorMessage, setErrorMessage] = useState<string>()
     const [clientSecret, setClientSecret] = useState("")
     const [loading, setLoading] = useState(false)
+    const [email, setEmail] = useState("")
 
     useEffect(() => {
         fetch("/api/create-payment-intent", {
@@ -48,7 +49,8 @@ const CheckoutPage = ( {amount} : {amount: number} ) => {
             elements,
             clientSecret,
             confirmParams: {
-                return_url: `http://www.localhost:3000/vert/payment-success?amount=${amount}`
+                return_url: `http://www.localhost:3000/vert/payment-success?amount=${amount}&email=${email}`,
+                receipt_email: email,  // Send the email to Stripe
             }
         })
 
@@ -78,6 +80,14 @@ const CheckoutPage = ( {amount} : {amount: number} ) => {
 
     return (
         <form onSubmit={handleSubmit} className='p-2 flex flex-col'>
+            <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Introduce tu email"
+                required
+                className="border p-2 mb-4 rounded-xl bg-white text-black w-full"
+            />
             {clientSecret && <PaymentElement/>}
             {errorMessage && <div>{errorMessage}</div>}
             <button 

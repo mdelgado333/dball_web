@@ -1,8 +1,8 @@
 export const dballVertPlans = [
     {
       title: "Planificación de 1 mes",
-      price: 49,
-      originalPrice: 49,
+      price: 59,
+      originalPrice: 59,
       duration: 1,
       features: [
         "1 llamada individual para iniciar el programa",
@@ -12,8 +12,8 @@ export const dballVertPlans = [
     },
     {
       title: "Planificación de 3 meses",
-      price: 119,
-      originalPrice: 149,
+      price: 149,
+      originalPrice: 179,
       duration: 3,
       features: [
         "3 llamadas individuales (1 por mes)",
@@ -23,8 +23,8 @@ export const dballVertPlans = [
     },
     {
       title: "Planificación de 6 meses",
-      price: 199,
-      originalPrice: 299,
+      price: 299,
+      originalPrice: 359,
       duration: 6,
       features: [
         "6 llamadas individuales (1 por mes)",

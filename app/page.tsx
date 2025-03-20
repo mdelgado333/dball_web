@@ -16,31 +16,31 @@ export default function Home() {
       
       <main className="flex flex-col justify-center items-center sm:items-start">
         
-        <div id='dball' className="w-full pb-75 flex flex-col items-center justify-items-center">
+        <div id='dball' className="w-screen flex flex-col items-center justify-items-center">
           <DballPage/>
         </div>
 
-        <div id='community'>
+        <div id=''>
           {/* <Comunidad/> */}
         </div>
 
-        <div id='mentality'>
+        <div id=''>
           {/* <Mentality/> */}
         </div>
         
-        <div id='academy'>
+        <div id=''>
           {/* <Academy/> */}
         </div>
 
-        <div id='vert'>
+        <div id=''>
           {/* <Vert/> */}
         </div>
 
-        <div id="app">
+        <div id="">
           {/* <App/> */}
         </div>
 
-        <div id='bts' className="snap-start">
+        <div id=''>
           {/* <Bts/> */}
         </div>
         
