@@ -1,7 +1,6 @@
 'use client'
 
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
 import { bebas } from "@/app/ui/fonts"
 
 export default function PaymentSuccess({
@@ -11,7 +10,6 @@ export default function PaymentSuccess({
 }) {
 
     const [emailSent, setEmailSent] = useState(false);
-    const router = useRouter();
 
     useEffect(() => {
         if (email && !emailSent) {
