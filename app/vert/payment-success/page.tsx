@@ -1,40 +1,40 @@
 'use client'
 
 import { useEffect, useState } from "react";
-import { bebas } from "@/app/ui/fonts"
+import { useSearchParams } from "next/navigation";
+import { bebas } from "@/app/ui/fonts";
 
-export default function PaymentSuccess({
-    searchParams: { amount, email },
-}: {
-    searchParams: { amount: string; email?: string }
-}) {
+export default function PaymentSuccess() {
+    const searchParams = useSearchParams();
+    const amount = searchParams.get("amount") || "0";
+    const email = searchParams.get("email") || undefined;
 
     const [emailSent, setEmailSent] = useState(false);
 
     useEffect(() => {
         if (email && !emailSent) {
-          sendConfirmationEmail(email);
+            sendConfirmationEmail(email);
         }
-      }, [email, emailSent]);
+    }, [email, emailSent]);
 
-      const sendConfirmationEmail = async (customerEmail: string) => {
+    const sendConfirmationEmail = async (customerEmail: string) => {
         try {
-          const response = await fetch("/api/send-email", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ email: customerEmail }),
-          });
-    
-          if (response.ok) {
-            console.log("Email sent successfully");
-            setEmailSent(true);
-          } else {
-            console.error("Error sending email");
-          }
+            const response = await fetch("/api/send-email", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email: customerEmail }),
+            });
+
+            if (response.ok) {
+                console.log("Email sent successfully");
+                setEmailSent(true);
+            } else {
+                console.error("Error sending email");
+            }
         } catch (error) {
-          console.error("Failed to send email:", error);
+            console.error("Failed to send email:", error);
         }
-      };
+    };
 
     return (
         <div className="h-screen w-5/6 self-center pt-5 flex flex-col justify-top gap-y-10">
@@ -42,15 +42,15 @@ export default function PaymentSuccess({
                 Gracias por confiar en nosotros
             </div>
             <div className="w-full lg:w-2/3 backdrop-filter self-center backdrop-blur-md bg-opacity-10 border border-gray-100 text-white border rounded-xl">
-            <div className="p-5">
-                Tu compra por el valor de {amount}€ ha sido realizada con éxito!
+                <div className="p-5">
+                    Tu compra por el valor de {amount}€ ha sido realizada con éxito!
+                </div>
+                <div className="p-5">
+                    {email
+                        ? `Te hemos mandado un correo electrónico a ${email} donde podrás agendar la llamada inicial para poder hacer tu planificación acorde a tus necesidades.`
+                        : "No se proporcionó un correo electrónico."}
+                </div>
             </div>
-            <div className="p-5">
-                Te hemos mandado un correo electrónico a {email} donde podrás agendar la llamada inicial para poder hacer tu planificación acorde a tus necesidades
-            </div>
-            </div>
-            
         </div>
-        
-    )
+    );
 }
