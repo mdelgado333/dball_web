@@ -6,14 +6,20 @@ import { bebas } from "@/app/ui/fonts";
 
 export default function PaymentSuccess() {
     const searchParams = useSearchParams();
-    const [amount, setAmount] = useState("0");
-    const [email, setEmail] = useState<string | undefined>(undefined);
+    
+    // Store parameters in state
+    const [amount, setAmount] = useState<string | null>(null);
+    const [email, setEmail] = useState<string | null>(null);
     const [emailSent, setEmailSent] = useState(false);
 
     useEffect(() => {
-        setAmount(searchParams.get("amount") || "0");
-        setEmail(searchParams.get("email") || undefined);
-    }, [searchParams]);
+        // Get values from search params only on the client
+        const fetchedAmount = searchParams.get("amount");
+        const fetchedEmail = searchParams.get("email");
+
+        setAmount(fetchedAmount);
+        setEmail(fetchedEmail);
+    }, [searchParams]); // Runs when searchParams change
 
     useEffect(() => {
         if (email && !emailSent) {
@@ -47,7 +53,7 @@ export default function PaymentSuccess() {
             </div>
             <div className="w-full lg:w-2/3 backdrop-filter self-center backdrop-blur-md bg-opacity-10 border border-gray-100 text-white border rounded-xl">
                 <div className="p-5">
-                    Tu compra por el valor de {amount}€ ha sido realizada con éxito!
+                    {amount ? `Tu compra por el valor de ${amount}€ ha sido realizada con éxito!` : "Cargando..."}
                 </div>
                 <div className="p-5">
                     {email
