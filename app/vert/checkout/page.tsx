@@ -7,7 +7,7 @@ import { loadStripe } from '@stripe/stripe-js'
 import { bebas } from '@/app/ui/fonts'
 import { dballVertPlans } from '../../lib/data'
 import { useSearchParams } from 'next/navigation'
-import { Suspense } from 'react'
+import { Suspense, useEffect, useState } from 'react'
 
 export default function Page() {
 
@@ -20,8 +20,20 @@ export default function Page() {
 
     const stripePromise = loadStripe(stripePublicKey)
 
-    const searchParams = useSearchParams();
-    const duration = searchParams.get("duration") ?? "1"
+    // State to manage the search parameters, so we handle them after mount
+    const [duration, setDuration] = useState<string | null>(null)
+
+    // Use useSearchParams and update the state on mount
+    useEffect(() => {
+        const searchParams = useSearchParams()
+        const queryDuration = searchParams.get("duration")
+        setDuration(queryDuration ?? "1")
+    }, [])
+
+    // Prevent rendering until the state is set
+    if (duration === null) {
+        return <div>Loading...</div>
+    }
     const selectedPlan = dballVertPlans.find((plan: {
         title: string;
         price: number;
