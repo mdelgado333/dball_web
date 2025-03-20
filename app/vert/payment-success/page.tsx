@@ -6,10 +6,14 @@ import { bebas } from "@/app/ui/fonts";
 
 export default function PaymentSuccess() {
     const searchParams = useSearchParams();
-    const amount = searchParams.get("amount") || "0";
-    const email = searchParams.get("email") || undefined;
-
+    const [amount, setAmount] = useState("0");
+    const [email, setEmail] = useState<string | undefined>(undefined);
     const [emailSent, setEmailSent] = useState(false);
+
+    useEffect(() => {
+        setAmount(searchParams.get("amount") || "0");
+        setEmail(searchParams.get("email") || undefined);
+    }, [searchParams]);
 
     useEffect(() => {
         if (email && !emailSent) {
