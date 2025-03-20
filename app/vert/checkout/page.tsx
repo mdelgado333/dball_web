@@ -3,7 +3,7 @@
 import CheckoutPage from '@/app/ui/components/checkoutPage'
 import { convertToSubCurrency } from '@/app/lib/convertToSubcurrency'
 import { Elements } from '@stripe/react-stripe-js'
-import { loadStripe } from '@stripe/stripe-js'
+import { Stripe, loadStripe } from '@stripe/stripe-js'
 import { bebas } from '@/app/ui/fonts'
 import { dballVertPlans } from '../../lib/data'
 import { useSearchParams } from 'next/navigation'
@@ -25,7 +25,7 @@ export default function Page() {
     )
 }
 
-function Checkout({ stripePromise }: { stripePromise: any }) {
+function Checkout({ stripePromise }: { stripePromise: Promise<Stripe | null> }) {
     const searchParams = useSearchParams()
     const [duration, setDuration] = useState<string | null>(null)
 
