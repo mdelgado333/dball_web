@@ -11,7 +11,7 @@ import { Suspense, useEffect, useState } from 'react'
 
 export default function Page() {
     const stripePublicKey = process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY
-
+    console.log("Stripe public key:", stripePublicKey);
     if (!stripePublicKey) {
         throw new Error("NEXT_PUBLIC_STRIPE_PUBLIC_KEY is not defined")
     }
