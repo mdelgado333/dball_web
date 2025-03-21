@@ -8,9 +8,7 @@ export async function POST(request: NextRequest) {
         throw new Error("STRIPE_SECRET_KEY is not defined");
     }
     const stripe = new Stripe(stripeSecretKey);
-
-    console.log("Stripe Secret Key:", stripeSecretKey ? "Loaded" : "Not Loaded");
-
+    
     try {
 
         const { amount } = await request.json()

@@ -10,8 +10,6 @@ import { useSearchParams } from 'next/navigation'
 import { Suspense, useEffect, useState } from 'react'
 
 const stripePublicKey = process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY
-console.log("Stripe public key:", stripePublicKey);
-
 
 export default function Page() {
 

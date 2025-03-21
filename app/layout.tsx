@@ -8,6 +8,9 @@ import Footer from "./ui/landing/footer";
 export const metadata: Metadata = {
   title: "DBALLHUB",
   description: "Where hoopers unite.",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
