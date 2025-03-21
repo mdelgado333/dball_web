@@ -25,7 +25,7 @@ export default function DballPage() {
 
       {/* Subtitle with Scroll Effect */}
       <div 
-        className={`${roboto.className} w-5/8 sm:w-full xl:w-[700px] text-center text-white text-[10px] sm:text-[30px] lg:text-[30px]`}
+        className={`${roboto.className} w-full sm:w-full xl:w-[700px] text-center text-white text-[25px] lg:text-[50px]`}
         style={{
           opacity,
           transform: `translateY(${translateY}px)`,

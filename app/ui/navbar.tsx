@@ -15,7 +15,7 @@ export default function Navbar() {
 
     {/* Logo */}
     <div className="flex items-center p-5 flex-shrink-0 text-white">
-      <Link href="/" className="text-3xl md:text-4xl text-white font-semibold transition duration-300 ease-in-out hover:scale-110">
+      <Link href="/" onClick={() => setIsOpen(!isOpen)} className="text-3xl md:text-4xl text-white font-semibold transition duration-300 ease-in-out hover:scale-110">
         DBALL
       </Link>
     </div>
@@ -49,7 +49,7 @@ export default function Navbar() {
       <Link href="/" className="block blur-sm text-white mb-5 xl:mb-0 transition duration-300 ease-in-out hover:scale-110">
         Academy
       </Link>
-      <Link href="/vert" className="block text-white mb-5 xl:mb-0 transition duration-300 ease-in-out hover:scale-110">
+      <Link href="/vert" onClick={() => setIsOpen(!isOpen)} className="block text-white mb-5 xl:mb-0 transition duration-300 ease-in-out hover:scale-110">
         Vert
       </Link>
       <Link href="/" className="block blur-sm text-white mb-5 xl:mb-0 transition duration-300 ease-in-out hover:scale-110">
