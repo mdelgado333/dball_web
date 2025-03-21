@@ -49,7 +49,7 @@ const CheckoutPage = ( {amount} : {amount: number} ) => {
             elements,
             clientSecret,
             confirmParams: {
-                return_url: `http://www.localhost:3000/vert/payment-success?amount=${amount}&email=${email}`,
+                return_url: `http://www.dballhub.com/vert/payment-success?amount=${amount}&email=${email}`,
                 receipt_email: email,  // Send the email to Stripe
             }
         })
