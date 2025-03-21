@@ -4,6 +4,7 @@ import Navbar from "./ui/navbar";
 import { roboto } from "./ui/fonts";
 import BG from './ui/bg'
 import Footer from "./ui/landing/footer";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 export const metadata: Metadata = {
   title: "DBALLHUB",
@@ -36,8 +37,9 @@ export default function RootLayout({
             yGap={36}
           />  
           <Navbar />
-          <main className="flex flex-grow flex-col">{children}
-
+          <main className="flex flex-grow flex-col">
+            {children}
+            <SpeedInsights/>
           </main>
       </body>
       <Footer/>
