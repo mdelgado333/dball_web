@@ -1,7 +1,7 @@
 export const dballVertPlans = [
     {
       title: "Planificación de 1 mes",
-      price: 59,
+      price: 29,
       originalPrice: 59,
       duration: 1,
       features: [
@@ -12,7 +12,7 @@ export const dballVertPlans = [
     },
     {
       title: "Planificación de 3 meses",
-      price: 149,
+      price: 89,
       originalPrice: 179,
       duration: 3,
       features: [
@@ -23,7 +23,7 @@ export const dballVertPlans = [
     },
     {
       title: "Planificación de 6 meses",
-      price: 299,
+      price: 179,
       originalPrice: 359,
       duration: 6,
       features: [

@@ -51,8 +51,13 @@ export default function Page() {
                         pathname: '/vert/checkout',
                         query: { duration: '1' }
                      }}
-                    className={`${bebas.className} flex flex-row justify-center gap-1 border border-white rounded-xl p-3 w-30 text-center transition duration-200 ease-in-out hover:bg-black hover:scale-105`}>
-                    59€
+                     className={`${bebas.className} flex flex-row justify-center gap-1 border border-white rounded-xl p-3 w-30 text-center transition duration-200 ease-in-out hover:bg-black hover:text-white hover:scale-105`}>
+                     <div className="line-through text-red-400">
+                         59€
+                     </div>
+                     <div>
+                         29€
+                     </div>
                 </Link>
             </div>
 
@@ -104,7 +109,7 @@ export default function Page() {
                     179€
                 </div>
                 <div>
-                    149€
+                    89€
                 </div>
                 </Link>
             </div>
@@ -152,7 +157,7 @@ export default function Page() {
                     359€
                 </div>
                 <div>
-                    299€
+                    179€
                 </div>
                 </Link>
             </div>
