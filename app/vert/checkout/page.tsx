@@ -40,7 +40,7 @@ function Checkout({ stripePromise }: { stripePromise: Promise<Stripe | null> }) 
     }
 
     const selectedPlan = dballVertPlans.find((plan) => plan.duration.toString() === duration)
-    const amount = selectedPlan?.price ?? 29
+    const amount = selectedPlan?.price ?? 15
     const monthPlural = duration === '1' ? 'mes' : 'meses'
 
     return (
