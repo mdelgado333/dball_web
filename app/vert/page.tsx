@@ -56,7 +56,7 @@ export default function Page() {
                          59€
                      </div>
                      <div>
-                         29€
+                         15€
                      </div>
                 </Link>
             </div>
@@ -109,7 +109,7 @@ export default function Page() {
                     179€
                 </div>
                 <div>
-                    89€
+                    44€
                 </div>
                 </Link>
             </div>
@@ -157,7 +157,7 @@ export default function Page() {
                     359€
                 </div>
                 <div>
-                    179€
+                    89€
                 </div>
                 </Link>
             </div>
